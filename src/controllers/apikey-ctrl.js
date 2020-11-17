@@ -12,7 +12,7 @@ createApikey = (req, res) => {
     }
 
     const apikey = new Apikey(body)
-    body.key = uuidv4();
+    apikey.key = uuidv4();
 
     if (!apikey) {
         return res.status(400).json({ success: false, error: err })
