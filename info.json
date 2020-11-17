@@ -1,0 +1,13 @@
+{
+    "project": [
+        {
+            "author": "Michael Peters",
+            "projectName": "guwt-admin-panel-backend",
+            "version": "1.0.0",
+            "description": "Backend for guwt-admin-panel",
+            "longDescription": "",
+            "githubLink": "https://github.com/michaelpeterswa/guwt-admin-panel-backend",
+            "date": "11.16.2020"
+        }
+    ]
+}
