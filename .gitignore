@@ -1,0 +1,5 @@
+# npm stuff
+node_modules/
+
+# dotenv
+.env
