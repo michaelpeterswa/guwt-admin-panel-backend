@@ -9,6 +9,7 @@ require('dotenv').config()
 
 const db = require('./db')
 const organizationRouter = require('./routes/organization-router')
+const apikeyRouter = require('./routes/apikey-router')
 
 const app = express()
 //port the app is currently serving to
@@ -25,6 +26,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api', organizationRouter)
+app.use('/auth', apikeyRouter)
 
 const server = app.listen(port, () => console.log(`guwt-admin-panel-backend server app listening on port ${port}!\n`))
 
