@@ -27,6 +27,7 @@
 ```
 git clone https://github.com/michaelpeterswa/guwt-admin-panel-backend.git
 npm i
+npm test
 npm start
 ```
 
