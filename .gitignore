@@ -3,3 +3,7 @@ node_modules/
 
 # dotenv
 .env
+
+# testing
+.nyc_output/
+coverage/
