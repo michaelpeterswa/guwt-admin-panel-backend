@@ -2,8 +2,8 @@
 
 const express = require('express')
 const bodyParser = require('body-parser')
+const passport = require('passport')
 const HeaderAPIKeyStrategy = require('passport-headerapikey').HeaderAPIKeyStrategy
-var passport = require('passport')
 var cors = require('cors')
 var path = require('path')
 
@@ -21,7 +21,6 @@ const port = 6969
 app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(passport.initialize());
 
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
@@ -30,38 +29,27 @@ app.get('/', (req, res) => {
     res.send('guwt-admin-panel-backend')
 })
 
-//-----------------------------------
-// TESTING
-console.log(process.env.API_KEY)
-
+passport.initialize()
 passport.use(new HeaderAPIKeyStrategy(
   { header: 'Authentication', prefix: 'Api-Key ' },
   false,
   function(apikey, done) {
-    Apikey.findOne({ key: apikey }, function (err, user) {
+      Apikey.findOne({ key: apikey }, function (err, apikey) {
       if (err) { return done(err); }
-      if (!user) { return done(null, false); }
-      return done(null, user);
-    });
+      if (!apikey) { return done(null, false); }
+      if(apikey.enabled == true) { return done(null, apikey); } 
+      });
   }
-));
-
-app.post('/test', 
-  passport.authenticate('headerapikey', { session: false, failureRedirect: '/unauthorized' }),
-  function(req, res) {
-    res.json({ message: "Authenticated" })
-  });
-
-app.get('/unauthorized', (req, res) => {
-  res.send('unauthorized')
-})
-
-//-----------------------------------
+  ));
 
 app.use('/api', organizationRouter)
 app.use('/auth', apikeyRouter)
 
 const server = app.listen(port, () => console.log(`guwt-admin-panel-backend server app listening on port ${port}!\n`))
+
+app.get('/unauthorized', (req, res) => {
+  res.status(401).json({ message: "Unauthorized" });
+  })
 
 app.use(function (req, res) {
     res.status(404).send("404");

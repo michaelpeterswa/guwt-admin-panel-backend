@@ -1,7 +1,5 @@
 const express = require('express')
-
 const APICtrl = require('../controllers/apikey-ctrl')
-
 const router = express.Router()
 
 router.post('/a', APICtrl.createApikey)
