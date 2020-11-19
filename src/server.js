@@ -34,6 +34,7 @@ passport.use(new HeaderAPIKeyStrategy(
   { header: 'Authentication', prefix: 'Api-Key ' },
   false,
   function(apikey, done) {
+      console.log(apikey);
       Apikey.findOne({ key: apikey }, function (err, apikey) {
       if (err) { return done(err); }
       if (!apikey) { return done(null, false); }
