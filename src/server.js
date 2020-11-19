@@ -37,7 +37,8 @@ passport.use(new HeaderAPIKeyStrategy(
       Apikey.findOne({ key: apikey }, function (err, apikey) {
       if (err) { return done(err); }
       if (!apikey) { return done(null, false); }
-      if(apikey.enabled == true) { return done(null, apikey); } 
+      // tempfix
+      return done(null, apikey);
       });
   }
   ));
