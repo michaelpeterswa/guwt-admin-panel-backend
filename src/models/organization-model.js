@@ -5,7 +5,11 @@ const Organization = new Schema(
     {
         name: { type: String, required: true },
         department: { type: String, required: true },
-        admin: { type: String, required: true },
+        admin: { 
+            type: Array,
+            items:{type: String}, 
+            required: true 
+        },
     },
     { timestamps: true },
 )
