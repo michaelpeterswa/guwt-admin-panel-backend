@@ -57,7 +57,8 @@ updateOrganization = async (req, res) => {
         organization.name = body.name
         organization.department = body.department
         organization.admin = body.admin
-        organization.moderators = body.admin
+        organization.moderators = body.moderators
+        organization.prospectives = body.prospectives
         organization
             .save()
             .then(() => {
