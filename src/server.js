@@ -15,6 +15,7 @@ require('dotenv').config()
 // local imports
 const db = require('./db')
 const organizationRouter = require('./routes/organization-router')
+const tourRouter = require('./routes/tour-router')
 const apikeyRouter = require('./routes/apikey-router')
 const Apikey = require('./models/apikey-model')
 
@@ -57,6 +58,7 @@ passport.use(new HeaderAPIKeyStrategy(
 
 // router directives
 app.use('/api', organizationRouter)
+app.use('/tour', tourRouter)
 app.use('/auth', apikeyRouter)
 
 // initialize server object and listen on "port"

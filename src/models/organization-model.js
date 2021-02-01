@@ -6,6 +6,7 @@ const Organization = new Schema(
         name: { type: String, required: true },
         department: { type: String, required: true },
         admin: { type: String, required: true },
+        moderators: [{ type: String, required: false}]
     },
     { timestamps: true },
 )
