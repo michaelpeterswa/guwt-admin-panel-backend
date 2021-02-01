@@ -1,7 +1,7 @@
 // Michael Peters
+// michaelpeterswa
 // guwt-admin-panel-backend
-// server.js
-// 2020
+// Last Modified: 2/1/2020 11:45 PST 
 
 // npm imports
 const express = require('express')
