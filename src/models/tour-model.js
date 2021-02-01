@@ -8,6 +8,8 @@ const Tour = new Schema(
         organization: { type: String, required: true},
         stops: [{ 
             stop_id: String, 
+            stop_name: String,
+            stop_desc: String,
             lat: String,
             long: String,
             media: [{text: String}]
