@@ -98,6 +98,20 @@ createMedia = (req, res) => {
     }
 }
 
+getMediaById = async (req, res) => {
+    await Media.findOne({ _id: req.params.id }, (err, media) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err })
+        }
+        if (!media) {
+            return res
+                .status(404)
+                .json({ success: false, error: `Media not found` })
+        }
+        return res.status(200).json({ success: true, data: media })
+    }).catch(err => console.log(err))
+}
+
 getMedia = async (req, res) => {
     await Media.find({}, (err, medias) => {
         if (err) {
@@ -114,5 +128,6 @@ getMedia = async (req, res) => {
 
 module.exports = {
     createMedia,
+    getMediaById,
     getMedia,
 }

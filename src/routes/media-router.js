@@ -5,11 +5,26 @@
 const express = require('express')
 const mediaCtrl = require('../controllers/media-ctrl')
 const router = express.Router()
+const passport = require('passport')
 
-router.post('/m', mediaCtrl.createMedia)
-// router.put('/m/:id', MediaCtrl.updateMedia)
-// router.delete('/m/:id', MediaCtrl.deleteMedia)
-// router.get('/m/:id', MediaCtrl.getMediaById)
-router.get('/ms', mediaCtrl.getMedia)
+router.post('/', 
+    passport.authenticate('headerapikey', { session: false, failureRedirect: '/unauthorized' }), 
+    mediaCtrl.createMedia)
+
+// router.put('/m/:id', 
+//     passport.authenticate('headerapikey', { session: false, failureRedirect: '/unauthorized' }),
+//     mediaCtrl.updateMedia)
+
+// router.delete('/m/:id', 
+//     passport.authenticate('headerapikey', { session: false, failureRedirect: '/unauthorized' }),
+//     mediaCtrl.deleteMedia)
+
+router.get('/m/:id', 
+    passport.authenticate('headerapikey', { session: false, failureRedirect: '/unauthorized' }),
+    mediaCtrl.getMediaById)
+
+router.get('/ms',
+    passport.authenticate('headerapikey', { session: false, failureRedirect: '/unauthorized' }),
+    mediaCtrl.getMedia)
 
 module.exports = router
