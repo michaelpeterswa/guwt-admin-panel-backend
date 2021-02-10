@@ -98,21 +98,21 @@ createMedia = (req, res) => {
     }
 }
 
-// getMedia = async (req, res) => {
-//     await Apikey.find({}, (err, apikeys) => {
-//         if (err) {
-//             return res.status(400).json({ success: false, error: err })
-//         }
-//         if (!apikeys.length) {
-//             return res
-//                 .status(404)
-//                 .json({ success: false, error: `Apikey not found` })
-//         }
-//         return res.status(200).json({ success: true, data: apikeys })
-//     }).catch(err => console.log(err))
-// }
+getMedia = async (req, res) => {
+    await Media.find({}, (err, medias) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err })
+        }
+        if (!medias.length) {
+            return res
+                .status(404)
+                .json({ success: false, error: `Media not found` })
+        }
+        return res.status(200).json({ success: true, data: medias })
+    }).catch(err => console.log(err))
+}
 
 module.exports = {
     createMedia,
-    // getMedia,
+    getMedia,
 }
