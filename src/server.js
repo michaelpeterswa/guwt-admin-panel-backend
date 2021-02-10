@@ -1,7 +1,7 @@
 // Michael Peters
 // michaelpeterswa
 // guwt-admin-panel-backend
-// Last Modified: 2/1/2020 11:45 PST 
+// Last Modified: 2/10/2020 11:45 PST 
 
 // npm imports
 const express = require('express')
@@ -9,6 +9,7 @@ const bodyParser = require('body-parser')
 const passport = require('passport')
 const HeaderAPIKeyStrategy = require('passport-headerapikey').HeaderAPIKeyStrategy
 var cors = require('cors')
+const fileUpload = require('express-fileupload')
 var path = require('path')
 require('dotenv').config()
 
@@ -17,6 +18,8 @@ const db = require('./db')
 const organizationRouter = require('./routes/organization-router')
 const tourRouter = require('./routes/tour-router')
 const apikeyRouter = require('./routes/apikey-router')
+const mediaRouter = require('./routes/media-router')
+
 const Apikey = require('./models/apikey-model')
 
 // instantiate express.js
@@ -26,6 +29,12 @@ const app = express()
 const port = 6968
 
 // app use directives
+
+// FileUpload
+app.use(fileUpload({
+  createParentPath: true
+}));
+
 // Cross-Origin
 app.use(cors())
 // Body Parsing of Request/Response objects
@@ -60,6 +69,7 @@ passport.use(new HeaderAPIKeyStrategy(
 app.use('/api', organizationRouter)
 app.use('/tour', tourRouter)
 app.use('/auth', apikeyRouter)
+app.use('/media', mediaRouter)
 
 // initialize server object and listen on "port"
 const server = app.listen(port, () => console.log(`guwt-admin-panel-backend server app listening on port ${port}!\n`))
