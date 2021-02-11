@@ -43,7 +43,7 @@ createMedia = (req, res) => {
         } else {
             let media = req.files.media
             media_obj.s3_id = uuidv4();
-            media_obj.mime_type = media.mimeType
+            media_obj.mime_type = media.mimetype
 
             let file_key = ""
             if (media.mimetype == "image/jpeg")
@@ -71,8 +71,6 @@ createMedia = (req, res) => {
                     
                 } if (data) {
                     media_obj.s3_loc = data.Location
-                    console.log("Upload Success", data.Location);
-
                     media_obj.save()
                     .then(() => {
                         return res.status(201).json({
@@ -97,6 +95,38 @@ createMedia = (req, res) => {
         }
     }
 }
+
+// deleteMedia = async (req, res) => {
+//     await Media.findOneAndDelete({ _id: req.params.id }).then(media) => {
+//         console.log(media)
+        
+//         if (err) {
+//             return res.status(400).json({ success: false, error: err })
+//         }
+
+//         if (!media) {
+//             return res
+//                 .status(404)
+//                 .json({ success: false, error: `Media not found` })
+//         }
+
+//         let file_key = ""
+//         if (media.mimetype == "image/jpeg")
+//             file_key = `${media.s3_id}.jpg`
+//         else if (media.mimetype == "image/png")
+//             file_key = `${media.s3_id}.png`
+//         else if (media.mimetype == "audio/mpeg")
+//             file_key = `${media.s3_id}.mp3`
+//         else if (media.mimetype == "video/mp4")
+//             file_key = `${media.s3_id}.mp4`
+//         else if (media.mimetype == "text/plain")
+//             file_key = `${media.s3_id}.txt`
+
+//         console.log(file_key)
+
+//         return res.status(200).json({ success: true, data: media })
+//     }).catch(err => console.log(err))
+// }
 
 getMediaById = async (req, res) => {
     await Media.findOne({ _id: req.params.id }, (err, media) => {
@@ -128,6 +158,7 @@ getMedia = async (req, res) => {
 
 module.exports = {
     createMedia,
+    // deleteMedia,
     getMediaById,
     getMedia,
 }
