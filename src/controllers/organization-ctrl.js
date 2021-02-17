@@ -79,7 +79,10 @@ updateOrganization = async (req, res) => {
 
 deleteOrganization = async (req, res) => {
     await Organization.findOneAndDelete({ _id: req.params.id }).then(r => {
-        return res.status(200).json({ success: true, data: r })
+        if(r)
+            return res.status(200).json({ success: true, data: r })
+        else
+            return res.status(404).json({ success: false, error: "not found" })
     }).catch(error => {
         return res
                 .status(404).json({ success: false, error: error })
