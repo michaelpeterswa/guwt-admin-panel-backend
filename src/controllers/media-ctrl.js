@@ -61,6 +61,7 @@ createMedia = (req, res) => {
             const params = {
                 Bucket: process.env.BUCKET_NAME,
                 Key: file_key, // File name you want to save as in S3
+                ContentType: media.mimetype,
                 Body: media.data
             };
 
