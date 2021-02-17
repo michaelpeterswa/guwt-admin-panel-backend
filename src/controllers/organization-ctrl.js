@@ -78,19 +78,12 @@ updateOrganization = async (req, res) => {
 }
 
 deleteOrganization = async (req, res) => {
-    await Organization.findOneAndDelete({ _id: req.params.id }, (err, organization) => {
-        if (err) {
-            return res.status(400).json({ success: false, error: err })
-        }
-
-        if (!organization) {
-            return res
-                .status(404)
-                .json({ success: false, error: `Organization not found` })
-        }
-
-        return res.status(200).json({ success: true, data: organization })
-    }).catch(err => console.log(err))
+    await Organization.findOneAndDelete({ _id: req.params.id }).then(r => {
+        return res.status(200).json({ success: true, data: r })
+    }).catch(error => {
+        return res
+                .status(404).json({ success: false, error: error })
+    })
 }
 
 getOrganizationById = async (req, res) => {
