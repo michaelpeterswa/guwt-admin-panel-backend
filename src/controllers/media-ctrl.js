@@ -1,6 +1,6 @@
 // Michael Peters
 // michaelpeterswa
-// Last Modified: 2/9/2020 10:45 PST 
+// Last Modified: 2/16/2020 10:45 PST 
 
 const S3 = require('aws-sdk/clients/s3')
 const { v4: uuidv4 } = require('uuid');
