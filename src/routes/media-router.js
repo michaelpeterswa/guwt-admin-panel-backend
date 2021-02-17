@@ -15,9 +15,9 @@ router.post('/',
 //     passport.authenticate('headerapikey', { session: false, failureRedirect: '/unauthorized' }),
 //     mediaCtrl.updateMedia)
 
-// router.delete('/m/:id', 
-//     passport.authenticate('headerapikey', { session: false, failureRedirect: '/unauthorized' }),
-//     mediaCtrl.deleteMedia)
+router.delete('/m/:id', 
+    passport.authenticate('headerapikey', { session: false, failureRedirect: '/unauthorized' }),
+    mediaCtrl.deleteMedia)
 
 router.get('/m/:id', 
     passport.authenticate('headerapikey', { session: false, failureRedirect: '/unauthorized' }),
