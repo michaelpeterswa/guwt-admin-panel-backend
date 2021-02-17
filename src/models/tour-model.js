@@ -18,7 +18,9 @@ const Tour = new Schema(
             stop_desc: String,
             lat: String,
             long: String,
-            media: [{text: String}]
+            media: [{
+                id: String,
+                s3_loc: String}]
         }]
     },
     { timestamps: true },
