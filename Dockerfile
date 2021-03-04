@@ -12,8 +12,8 @@ RUN npm install
 
 # Bundle app source
 COPY . .
-# Expose port 6969
-EXPOSE 6969
+# Expose port 6968
+EXPOSE 6968
 
 # run npm start
 CMD [ "npm", "start" ]
