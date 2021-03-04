@@ -58,6 +58,7 @@ updateTour = async (req, res) => {
         tour.description = body.description
         tour.organization = body.organization
         tour.stops = body.stops
+        tour.enabled = body.enabled
         tour
             .save()
             .then(() => {
