@@ -26,7 +26,7 @@ const Apikey = require('./models/apikey-model')
 const app = express()
 
 // port the app is currently serving to
-const port = 6968
+const port = 6969
 
 // app use directives
 
