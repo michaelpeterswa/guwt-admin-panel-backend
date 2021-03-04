@@ -11,6 +11,7 @@ const Tour = new Schema(
         description: { type: String, required: true },
         organization: { type: String, required: true},
         number_of_stops: { type: Number, required: true},
+        enabled: { type: Boolean, required: true},
         stops: [{ 
             stop_id: String, 
             stop_number: Number,
