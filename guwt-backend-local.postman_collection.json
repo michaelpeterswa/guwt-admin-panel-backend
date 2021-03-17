@@ -1,0 +1,724 @@
+{
+	"info": {
+		"_postman_id": "0001c054-31d3-4bee-962c-4dd627e2646a",
+		"name": "guwt-backend-local",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "apikey",
+			"item": [
+				{
+					"name": "get-apikeys",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6968/auth/as",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6968",
+							"path": [
+								"auth",
+								"as"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-apikey-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6968/auth/as",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6968",
+							"path": [
+								"auth",
+								"as"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-apikey",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"test2\",\r\n    \"enabled\": \"true\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6968/auth/a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6968",
+							"path": [
+								"auth",
+								"a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-apikey",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"test2\",\r\n    \"key\": \"meme\",\r\n    \"enabled\": \"true\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6968/auth/a/60523c9333e1b077545f4f83",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6968",
+							"path": [
+								"auth",
+								"a",
+								"60523c9333e1b077545f4f83"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-apikey",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"test2\",\r\n    \"key\": \"meme\",\r\n    \"enabled\": \"true\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6968/auth/a/5fd05c21b5f803001f5643a8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6968",
+							"path": [
+								"auth",
+								"a",
+								"5fd05c21b5f803001f5643a8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "organization",
+			"item": [
+				{
+					"name": "create-organization",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Api-Key 4c6f9ae5-6ed8-4fdb-803d-d7032c902496",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authentication",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n            \"moderators\": [\r\n                \"nlatham@zagmail.gonzaga.edu\"\r\n            ],\r\n            \"prospectives\": [],\r\n            \"name\": \"Gonzasdfasdfaga CS\",\r\n            \"department\": \"CSToasdfasdfurs\",\r\n            \"admin\": \"mpasdfastrswa\"\r\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6968/api/organization",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6968",
+							"path": [
+								"api",
+								"organization"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-organizations",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Api-Key 4c6f9ae5-6ed8-4fdb-803d-d7032c902496",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authentication",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:6968/api/organizations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6968",
+							"path": [
+								"api",
+								"organizations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-organizations-by-id",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Api-Key 4c6f9ae5-6ed8-4fdb-803d-d7032c902496",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authentication",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6968/api/organization/604005ebdffdbb0032033cba",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6968",
+							"path": [
+								"api",
+								"organization",
+								"604005ebdffdbb0032033cba"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-organization",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Api-Key 4c6f9ae5-6ed8-4fdb-803d-d7032c902496",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authentication",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"moderators\": [\r\n        \"nlatham@zagmail.gonzaga.edu\"\r\n    ],\r\n    \"prospectives\": [],\r\n    \"name\": \"Gonzasdfasdfaga CS TESTTESTTEST\",\r\n    \"department\": \"CSToasdfasdfurs\",\r\n    \"admin\": \"mpasdfastrswa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6968/api/organization/605246239841818524746f24",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6968",
+							"path": [
+								"api",
+								"organization",
+								"605246239841818524746f24"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-organization",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Api-Key 4c6f9ae5-6ed8-4fdb-803d-d7032c902496",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authentication",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6968/api/organization/6052456b9841818524746f23",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6968",
+							"path": [
+								"api",
+								"organization",
+								"6052456b9841818524746f23"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tour",
+			"item": [
+				{
+					"name": "create-tour",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Api-Key 4c6f9ae5-6ed8-4fdb-803d-d7032c902496",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authentication",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"New Tour2\",\r\n    \"organization\": \"Gonzaga CS\",\r\n    \"description\": \"description2\",\r\n    \"stops\": [],\r\n    \"number_of_stops\": 0,\r\n    \"enabled\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6968/tour",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6968",
+							"path": [
+								"tour"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-tours",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Api-Key 4c6f9ae5-6ed8-4fdb-803d-d7032c902496",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authentication",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6968/tour/tours",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6968",
+							"path": [
+								"tour",
+								"tours"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-tour-by-id",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Api-Key 4c6f9ae5-6ed8-4fdb-803d-d7032c902496",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authentication",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6968/tour/t/60524b272c03ba74f4c4b628",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6968",
+							"path": [
+								"tour",
+								"t",
+								"60524b272c03ba74f4c4b628"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-tour",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Api-Key 4c6f9ae5-6ed8-4fdb-803d-d7032c902496",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authentication",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"New Tour2 69\",\r\n    \"organization\": \"Gonzaga CS\",\r\n    \"description\": \"description2345\",\r\n    \"stops\": [],\r\n    \"number_of_stops\": 0,\r\n    \"enabled\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6968/tour/t/60524b272c03ba74f4c4b628",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6968",
+							"path": [
+								"tour",
+								"t",
+								"60524b272c03ba74f4c4b628"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-tour",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Api-Key 4c6f9ae5-6ed8-4fdb-803d-d7032c902496",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authentication",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6968/tour/t/60524b272c03ba74f4c4b628",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6968",
+							"path": [
+								"tour",
+								"t",
+								"60524b272c03ba74f4c4b628"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "media",
+			"item": [
+				{
+					"name": "create-media",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Api-Key 4c6f9ae5-6ed8-4fdb-803d-d7032c902496",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authentication",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "media",
+									"type": "file",
+									"src": "/C:/Users/Michael Peters/Pictures/college-hall.jpg"
+								},
+								{
+									"key": "tour_id",
+									"value": "test_id",
+									"type": "text"
+								},
+								{
+									"key": "stop_id",
+									"value": "test_stop_id",
+									"type": "text"
+								},
+								{
+									"key": "add_text",
+									"value": "lmao",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:6968/media/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6968",
+							"path": [
+								"media",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-media",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Api-Key 4c6f9ae5-6ed8-4fdb-803d-d7032c902496",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authentication",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6968/media/ms",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6968",
+							"path": [
+								"media",
+								"ms"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-media-by-id",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Api-Key 4c6f9ae5-6ed8-4fdb-803d-d7032c902496",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authentication",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6968/media/m/604007dedffdbb0032033cc2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6968",
+							"path": [
+								"media",
+								"m",
+								"604007dedffdbb0032033cc2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-media",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Api-Key 4c6f9ae5-6ed8-4fdb-803d-d7032c902496",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authentication",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6968/media/m/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6968",
+							"path": [
+								"media",
+								"m",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

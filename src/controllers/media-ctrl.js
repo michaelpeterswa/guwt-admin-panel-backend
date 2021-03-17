@@ -132,31 +132,35 @@ deleteMedia = async (req, res) => {
 }
 
 getMediaById = async (req, res) => {
-    await Media.findOne({ _id: req.params.id }, (err, media) => {
-        if (err) {
-            return res.status(400).json({ success: false, error: err })
-        }
+    await Media.findOne({ _id: req.params.id }).then(media => {
         if (!media) {
             return res
                 .status(404)
                 .json({ success: false, error: `Media not found` })
         }
-        return res.status(200).json({ success: true, data: media })
-    }).catch(err => console.log(err))
+        else {
+            return res.status(200).json({ success: true, data: media })
+        }
+    }).catch(err => {
+        return res
+        .status(404)
+        .json({ success: false, error: err })})
 }
 
 getMedia = async (req, res) => {
-    await Media.find({}, (err, medias) => {
-        if (err) {
-            return res.status(400).json({ success: false, error: err })
-        }
+    await Media.find({}).then(medias => {
         if (!medias.length) {
             return res
                 .status(404)
                 .json({ success: false, error: `Media not found` })
         }
-        return res.status(200).json({ success: true, data: medias })
-    }).catch(err => console.log(err))
+        else{
+            return res.status(200).json({ success: true, data: medias })
+        }
+    }).catch(err => {
+        return res
+        .status(404)
+        .json({ success: false, error: err })})
 }
 
 module.exports = {
