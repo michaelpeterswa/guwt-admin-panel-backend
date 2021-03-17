@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.3](https://github.com/michaelpeterswa/guwt-admin-panel-backend/compare/v1.4.2...v1.4.3) (2021-03-17)
+
+
+### Bug Fixes
+
+* 5 security vulnerabilities have been removed ([8f31b9a](https://github.com/michaelpeterswa/guwt-admin-panel-backend/commit/8f31b9a42a1bb773879d833ccf52c03e700701c0))
+
 ### [1.4.2](https://github.com/michaelpeterswa/guwt-admin-panel-backend/compare/v1.4.1...v1.4.2) (2021-03-17)
 
 
