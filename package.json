@@ -1,6 +1,6 @@
 {
   "name": "guwt-admin-panel-backend",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "backend for guwt-admin-panel",
   "main": "server.js",
   "scripts": {
