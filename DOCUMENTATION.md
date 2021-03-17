@@ -55,7 +55,7 @@ GET: ```https://backend.gonzagatours.dev/api/organization/:id```
 
 **Get all Organizations:**
 
-GET: ```https://backend.gonzagatours.dev/api/organization```
+GET: ```https://backend.gonzagatours.dev/api/organizations```
 
 ## Tours
 All Tour requests must pass through this endpoint.

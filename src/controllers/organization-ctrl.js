@@ -47,8 +47,8 @@ updateOrganization = async (req, res) => {
         })
     }
 
-    Organization.findOne({ _id: req.params.id }, (err, organization) => {
-        if (err) {
+    Organization.findOne({ _id: req.params.id }).then(organization => {
+        if (!organization) {
             return res.status(404).json({
                 err,
                 message: 'Organization not found!',
@@ -74,7 +74,10 @@ updateOrganization = async (req, res) => {
                     message: 'Organization not updated!',
                 })
             })
-    })
+    }).catch(error => {
+        return res
+        .status(404)
+        .json({ success: false, error: error })})
 }
 
 deleteOrganization = async (req, res) => {
@@ -90,32 +93,35 @@ deleteOrganization = async (req, res) => {
 }
 
 getOrganizationById = async (req, res) => {
-    await Organization.findOne({ _id: req.params.id }, (err, organization) => {
-        if (err) {
-            return res.status(400).json({ success: false, error: err })
-        }
-
+    await Organization.findOne({ _id: req.params.id }).then(organization => {
         if (!organization) {
             return res
                 .status(404)
                 .json({ success: false, error: `Organization not found` })
         }
-        return res.status(200).json({ success: true, data: organization })
-    }).catch(err => console.log(err))
+        else {
+            return res.status(200).json({ success: true, data: organization })
+        }
+    }).catch(err => {
+        return res
+        .status(404)
+        .json({ success: false, error: err })})
 }
 
 getOrganizations = async (req, res) => {
-    await Organization.find({}, (err, organizations) => {
-        if (err) {
-            return res.status(400).json({ success: false, error: err })
-        }
+    await Organization.find({}).then(organizations => {
         if (!organizations.length) {
             return res
                 .status(404)
-                .json({ success: false, error: `Organization not found` })
+                .json({ success: false, error: `Organizations not found` })
         }
-        return res.status(200).json({ success: true, data: organizations })
-    }).catch(err => console.log(err))
+        else {
+            return res.status(200).json({ success: true, data: organizations })
+        }
+    }).catch(err => {
+        return res
+        .status(404)
+        .json({ success: false, error: err })})
 }
 
 module.exports = {
