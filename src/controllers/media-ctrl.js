@@ -1,6 +1,6 @@
 // Michael Peters
 // michaelpeterswa
-// Last Modified: 2/16/2020 10:45 PST 
+// Last Modified: 3/17/2020 11:45 PDT 
 
 const S3 = require('aws-sdk/clients/s3')
 const { v4: uuidv4 } = require('uuid');
@@ -71,7 +71,7 @@ createMedia = (req, res) => {
                     console.log("Error", err);
                     
                 } if (data) {
-                    media_obj.s3_loc = "https://guwt-media.s3-us-west-2.amazonaws.com/" + data.key
+                    media_obj.s3_loc = "https://guwt-media.s3-us-west-2.amazonaws.com/" + data
                     media_obj.save()
                     .then(() => {
                         return res.status(201).json({
