@@ -71,7 +71,7 @@ createMedia = (req, res) => {
                     console.log("Error", err);
                     
                 } if (data) {
-                    media_obj.s3_loc = data.Location
+                    media_obj.s3_loc = "https://guwt-media.s3-us-west-2.amazonaws.com/" + data.key
                     media_obj.save()
                     .then(() => {
                         return res.status(201).json({
