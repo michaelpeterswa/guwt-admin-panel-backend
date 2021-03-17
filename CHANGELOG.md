@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/michaelpeterswa/guwt-admin-panel-backend/compare/v1.3.0...v1.4.0) (2021-03-17)
+
+
+### Features
+
+* added deployment script ([998bc61](https://github.com/michaelpeterswa/guwt-admin-panel-backend/commit/998bc6122a26a7a5120f641bd47d10dcaabfbdfb))
+* Copied over data from GDocs ([ff792a2](https://github.com/michaelpeterswa/guwt-admin-panel-backend/commit/ff792a2d6b75e73ca36475459488744443f1e08f))
+* Create DOCUMENTATION.md ([868021b](https://github.com/michaelpeterswa/guwt-admin-panel-backend/commit/868021be0cf80bc6ebb296c890c9e3f209813cbe))
+
+
+### Bug Fixes
+
+* all media calls converted to async ([58d4bd7](https://github.com/michaelpeterswa/guwt-admin-panel-backend/commit/58d4bd7827fa9b0363f296610f5f6ef51a826242))
+* all organization calls converted to async ([73e7049](https://github.com/michaelpeterswa/guwt-admin-panel-backend/commit/73e70499232f428d99d742d3616aec56d2c68537))
+* capital letter preventing successful build on Jenkins ([a362fc1](https://github.com/michaelpeterswa/guwt-admin-panel-backend/commit/a362fc17814381fb87b510824338f93a8f967531))
+* change port back ([037e690](https://github.com/michaelpeterswa/guwt-admin-panel-backend/commit/037e6908c59235c8bafc16010b347023c98964a5))
+* changed up port and fixed entry scripts ([de140b5](https://github.com/michaelpeterswa/guwt-admin-panel-backend/commit/de140b58cb41df0e051286e2d331e574bad07ffe))
+* converted all apikey calls to async ([1f25672](https://github.com/michaelpeterswa/guwt-admin-panel-backend/commit/1f25672d2151a5fb2b2279c8a6d1d43ad2c7572d))
+* converted all tour calls to async ([55637c7](https://github.com/michaelpeterswa/guwt-admin-panel-backend/commit/55637c71407af9b752c8ed097a84f82f850638fe))
+
 ## [1.3.0](https://github.com/michaelpeterswa/guwt-admin-panel-backend/compare/v1.2.0...v1.3.0) (2021-02-17)
 
 
