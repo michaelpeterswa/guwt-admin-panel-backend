@@ -49,77 +49,77 @@ updateApikey = async (req, res) => {
         })
     }
 
-    Apikey.findOne({ _id: req.params.id }, (err, apikey) => {
-        if (err) {
-            return res.status(404).json({
-                err,
-                message: 'Apikey not found!',
-            })
-        }
-        apikey.name = body.name
-        apikey.key = body.key
-        apikey.enabled = body.enabled
-        apikey
-            .save()
-            .then(() => {
-                return res.status(200).json({
-                    success: true,
-                    id: apikey._id,
-                    message: 'Apikey updated!',
+    Apikey.findOne({ _id: req.params.id }).then(apikey => {
+        if(apikey){
+            apikey.name = body.name
+            apikey.key = body.key
+            apikey.enabled = body.enabled
+            apikey
+                .save()
+                .then(() => {
+                    return res.status(200).json({
+                        success: true,
+                        id: apikey._id,
+                        message: 'Apikey updated!',
+                    })
                 })
-            })
-            .catch(error => {
-                return res.status(404).json({
-                    error,
-                    message: 'Apikey not updated!',
-                })
-            })
-    })
-}
+                .catch(error => {
+                    return res.status(404).json({
+                        error,
+                        message: 'Apikey not updated!',
+                    })
+                })}})
+        .catch(error => {
+            return res.status(404).json({success: false, message: 'Apikey not updated!', error: error})
+        })
+    }
 
 deleteApikey = async (req, res) => {
-    await Apikey.findOneAndDelete({ _id: req.params.id }, (err, apikey) => {
-        if (err) {
-            return res.status(400).json({ success: false, error: err })
+    await Apikey.findOneAndDelete({ _id: req.params.id }).then(apikey => {
+        if(apikey){
+            return res.status(200).json({ success: true, data: apikey })
         }
-
-        if (!apikey) {
+        else {
             return res
                 .status(404)
                 .json({ success: false, error: `Apikey not found` })
-        }
-
-        return res.status(200).json({ success: true, data: apikey })
-    }).catch(err => console.log(err))
+        }    
+    }).catch(err => {
+        return res
+        .status(404)
+        .json({ success: false, error: error })})
 }
 
 getApikeyById = async (req, res) => {
-    await Apikey.findOne({ _id: req.params.id }, (err, apikey) => {
-        if (err) {
-            return res.status(400).json({ success: false, error: err })
+    await Apikey.findOne({ _id: req.params.id }).then(apikey => {
+        if(apikey){
+            return res.status(200).json({ success: true, data: apikey })
         }
-
-        if (!apikey) {
+        else {
             return res
                 .status(404)
                 .json({ success: false, error: `Apikey not found` })
         }
-        return res.status(200).json({ success: true, data: apikey })
-    }).catch(err => console.log(err))
+    }).catch(err => {
+        return res
+        .status(404)
+        .json({ success: false, error: error })})
 }
 
 getApikeys = async (req, res) => {
-    await Apikey.find({}, (err, apikeys) => {
-        if (err) {
-            return res.status(400).json({ success: false, error: err })
+    await Apikey.find({}).then(apikeys => {
+        if(apikeys.length) {
+            return res.status(200).json({ success: true, data: apikeys })
         }
-        if (!apikeys.length) {
+        else {
             return res
                 .status(404)
-                .json({ success: false, error: `Apikey not found` })
+                .json({ success: false, error: `No Apikeys found` })
         }
-        return res.status(200).json({ success: true, data: apikeys })
-    }).catch(err => console.log(err))
+    }).catch(err => {
+        return res
+        .status(404)
+        .json({ success: false, error: error })})
 }
 
 module.exports = {
