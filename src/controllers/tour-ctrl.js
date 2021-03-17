@@ -47,79 +47,80 @@ updateTour = async (req, res) => {
         })
     }
 
-    Tour.findOne({ _id: req.params.id }, (err, tour) => {
-        if (err) {
+    Tour.findOne({ _id: req.params.id }).then(tour => {
+        if(tour){
+            tour.name = body.name
+            tour.description = body.description
+            tour.organization = body.organization
+            tour.stops = body.stops
+            tour.enabled = body.enabled
+            tour
+                .save()
+                .then(() => {
+                    return res.status(200).json({
+                        success: true,
+                        id: tour._id,
+                        message: 'Tour updated!',
+                    })
+                })
+                .catch(error => {
+                    return res.status(404).json({
+                        error,
+                        message: 'Tour not updated!',
+                    })
+                })}
+        else {
             return res.status(404).json({
-                err,
-                message: 'Tour not found!',
-            })
+                error,
+                message: 'Tour not updated!',
+            }) 
         }
-        tour.name = body.name
-        tour.description = body.description
-        tour.organization = body.organization
-        tour.stops = body.stops
-        tour.enabled = body.enabled
-        tour
-            .save()
-            .then(() => {
-                return res.status(200).json({
-                    success: true,
-                    id: tour._id,
-                    message: 'Tour updated!',
-                })
-            })
-            .catch(error => {
-                return res.status(404).json({
-                    error,
-                    message: 'Tour not updated!',
-                })
-            })
-    })
+    }).catch(error => {
+        return res
+        .status(404)
+        .json({ success: false, message: 'Tour not updated!', error: error })})
 }
 
 deleteTour = async (req, res) => {
-    await Tour.findOneAndDelete({ _id: req.params.id }, (err, tour) => {
-        if (err) {
-            return res.status(400).json({ success: false, error: err })
+    await Tour.findOneAndDelete({ _id: req.params.id }).then(tour => {
+        if (tour) {
+            return res.status(200).json({ success: true, data: tour })
         }
-
-        if (!tour) {
-            return res
-                .status(404)
-                .json({ success: false, error: `Tour not found` })
-        }
-
-        return res.status(200).json({ success: true, data: tour })
-    }).catch(err => console.log(err))
+        else {
+            return res.status(404).json({ success: false, error: "Tour not Found" })
+        }       
+    }).catch(error => {
+        return res
+        .status(404)
+        .json({ success: false, error: error })})
 }
 
 getTourById = async (req, res) => {
-    await Tour.findOne({ _id: req.params.id }, (err, tour) => {
-        if (err) {
-            return res.status(400).json({ success: false, error: err })
+    await Tour.findOne({ _id: req.params.id }).then(tour => {
+        if (tour) {
+            return res.status(200).json({ success: true, data: tour })
         }
-
-        if (!tour) {
-            return res
-                .status(404)
-                .json({ success: false, error: `Tour not found` })
-        }
-        return res.status(200).json({ success: true, data: tour })
-    }).catch(err => console.log(err))
+        else {
+            return res.status(404).json({ success: false, error: "Tour not Found" })
+        }   
+    }).catch(err => {
+        return res
+        .status(404)
+        .json({ success: false, error: err })})
 }
 
 getTours = async (req, res) => {
-    await Tour.find({}, (err, tours) => {
-        if (err) {
-            return res.status(400).json({ success: false, error: err })
+    await Tour.find({}).then(tours => {
+        if (tours) {
+            return res.status(200).json({ success: true, data: tours })
         }
-        if (!tours.length) {
-            return res
-                .status(404)
-                .json({ success: false, error: `Tour not found` })
-        }
-        return res.status(200).json({ success: true, data: tours })
-    }).catch(err => console.log(err))
+        else {
+            return res.status(404).json({ success: false, error: "Tour not Found" })
+        }   
+    }).catch(err => {
+        return res
+        .status(404)
+        .json({ success: false, error: err })})
 }
 
 module.exports = {
